@@ -1,0 +1,88 @@
+# ╭───────────────────────────────────╮
+# │ /etc/.gitignore for a public repo │
+# ╰───────────────────────────────────╯
+
+# 1. Private keys & certificates (the real nuclear stuff)
+# SSH
+/etc/ssh/ssh_host_*_key
+/etc/ssh/ssh_host_*_key.pub
+
+# IKE/IKEv2/WireGuard/OpenIKED
+/etc/isakmpd/private/*
+/etc/iked/private/*
+/etc/wireguard/*.private
+/etc/wg-private.key
+
+# TLS / ACME / Certbot / acme-client
+/etc/ssl/private/*
+/etc/ssl/*.key
+/etc/acme/*.json
+/etc/acme/privkey-*.pem
+/etc/letsencrypt/
+/var/db/acme/*
+/var/www/.well-known/acme-challenge/*
+
+# OpenDKIM / OpenDMARC / RSPAMD per-domain private keys
+/etc/opendkim/keys/*/private
+/etc/opendkim/keys/*/*.private_key
+/etc/dkim/*
+
+# 2. User authentication
+/etc/master.passwd
+/etc/spwd.db
+/etc/pwd.db
+/etc/passwd
+
+# 3. Entropy & one-time files
+/etc/random.seed
+/etc/entropy-file
+
+# 4. Package & database files (huge and useless in git)
+/var/db/pkg/*
+/var/db/ports/*
+
+# 5. Mail queue & user mailboxes (NEVER commit these)
+/var/spool/smtpd/queue/*
+/var/mail/*
+/var/vmail/*
+/home/*/Maildir/*
+/home/*/.maildir/*
+
+# 6. Logs & runtime state
+/var/log/*
+/var/run/*
+/var/cron/tabs/*
+/var/backups/*
+/var/tmp/*
+/tmp/*
+
+# 7. Editor & OS garbage
+*~
+.*.swp
+.*.swo
+.*.swn
+.DS_Store
+Thumbs.db
+.desktop
+
+# 8. Local overrides that must stay untracked
+/etc/local/*
+/etc/my.local
+/etc/hostname.*~                  # temporary edits
+
+# 9. Generated files
+/etc/motd
+/etc/boottime
+/etc/rc.conf.local~                # backup from sysmerge
+/etc/issue
+
+# 10. Ignore large binary blobs people sometimes drop
+/etc/ssl/*.pem                     # if you only keep certs, not keys
+/etc/iked/certs/*                  # if you generate them elsewhere
+
+# 11. Safety net for anything obviously dangerous
+*.key
+*.pem
+*.private
+private/
+secrets/
