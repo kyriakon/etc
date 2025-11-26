@@ -1,11 +1,6 @@
 <div align="center">
   <h1><code>etc</code></h1>
-  <strong>
-    One repo to rule them all,<br/>
-    One repo to find them,<br/>
-    One repo to bring them all,<br />
-    and with a single `obsd-deploy-all` bind them.
-  </strong>
+  <strong>One repo to rule them all, one repo to find them, one repo to bring them all, and with `obsd-deploy-all` to bind them.</strong>
 </div>
 
 Public, security-focused configs for all our OpenBSD hosts.
